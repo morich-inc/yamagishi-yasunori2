@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山岸靖典 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>山岸靖典 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社Hacobu</a>
+  <a href="#k2">2. GO株式会社（旧社名：株式会社Mobility Technologies）</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">【プラットフォーム事業本部】AIとデータでビジネスを推進する戦略企画/BizOps.</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社Hacobu</div>
+  <div class="co-url"><a href="https://herp.careers/v1/hacobu/aJscz7O1GwGJ" target="_blank">https://herp.careers/v1/hacobu/aJscz7O1GwGJ</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区三田3-14-10 三田3丁目MTビル9F</td></tr><tr><th>設立</th><td>2015年6月30日</td></tr><tr><th>従業員数</th><td>200名</td></tr><tr><th>資本金</th><td>約38億円（資本準備金含む）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>『運ぶを最適化する』ミッションのもと、政府主導の物流改革で急成長中の物流SaaS事業</li><li>AIツール（ChatGPT、Gemini等）を活用した業務最適化の最前線</li><li>経営直下で意思決定に関わり、データ分析が事業戦略に直結するポジション</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">株式会社Hacobuは『運ぶを最適化する』というミッションを掲げ、物流SaaS事業が急成長を遂げています。物流改革が政府主導で進む中、BizOps.はAI×データを使ってSaaS事業を推進している企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>株式会社Hacobu</strong>は『運ぶを最適化する』というミッションを掲げ、物流SaaS事業が急成長を遂げています。物流改革が政府主導で進む中、BizOps.はAI×データを使ってSaaS事業を推進している企業です。</p><p><strong>事業内容：</strong>物流向けアプリケーション及びハードウェアの開発・販売、貨物利用運送事業。クラウドベースの物流情報プラットフォーム「MOVO（ムーボ）」を提供しています。</p><p><strong>キーワード：</strong>物流, エンプラ向け, Saas, DX</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【プラットフォーム事業本部】AIとデータでビジネスを推進する戦略企画/BizOps.</div>
+          <div class="job-preview">AIツールを活用し、データドリブン経営を推進するBizOps戦略企画ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■業務内容</strong></p><p>当社は『運ぶを最適化する』というミッションを掲げ、物流SaaS事業が急成長を遂げています。物流改革が政府主導で進む中、BizOps.はAI×データを使ってSaaS事業を推進しています。新しく入る方には、成長フェーズのHacobuを「最適化」していく核となる役割を担っていただきます。現在、部長含む3名のチームで約90名のプラットフォーム事業本部全体を横断したプロジェクトを複数動かしており、増員募集をしています。</p><p><strong>【ミッション】</strong></p><ul><li>AIを武器に、業務プロセスを&quot;再構築&quot;し、組織の生産性を最大化</li><li>CRMデータを経営資源として活かす、データドリブン経営の推進役</li><li>Salesforceを中心とした基幹システム群の最適設計・運用を主導</li></ul><p><strong>【具体的な業務内容】</strong></p><ul><li>Chat GPT、Gemini、Cursor、DevinなどのAIツールを使った業務最適化</li><li>社内に蓄積されたビッグデータの分析結果から潜在顧客の発掘・業務改善</li><li>Salesforceからデータを抽出し、Tableauを用いてセールス・マーケティングチーム（約30名）のKPIを可視化。週次で各部長陣と改善策を議論</li><li>部長陣とディスカッションしながら各チームのKPI可視化・改善・分析環境の構築</li><li>事業部門と管理部門の間に立ち、事業部門に対して助言やサポートの実施</li></ul><p><strong>【ポジションの魅力】</strong></p><ul><li>経営直下の意思決定への貢献：週次の経営会議にもオブザーバー参加し、あなたの分析が事業戦略に直結するダイナミズムを実感できます。</li><li>0→1の仕組み創造：急成長中の組織だからこそ、定まったやり方はありません。事業をスケールさせるための最適なオペレーションを、ゼロから構築する大きな裁量が与えられます。</li><li>ビジネス戦略を推進すべくデータ分析、プロジェクト管理、組織横断型のコミュニケーション、テクノロジーを活かした業務効率化など、多面的な経験、スキルを得ることができるポジションです。</li></ul><p><strong>■応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>データを基に潜在課題を特定し、解決のための意思決定及び実行した経験</li><li>部門の枠を超えた改善提案/実行プロジェクトをマネジメントした経験</li><li>新しい課題に対して、仮説を立てて施策立案・実行した経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>Salesforceを改善・要件定義・実装した経験</li><li>SQLやTableauなどデータ分析ツールの経験</li><li>AIを活用して業務プロセスを改善した経験</li><li>Dify, Zapier, Makeなどを用いたワークフロー構築経験</li></ul><p><strong>■求める人物像</strong></p><ul><li>複数の部門やチームと連携し、協力を促進していくことができる方</li><li>変化やスピードを楽しむことができる方</li><li>データを見るのが好きな方</li><li>データ分析を通して事業推進することにやりがいを感じる方</li></ul><p><strong>■年収：</strong>600～900万円</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">💰 600-900万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://herp.careers/v1/hacobu/aJscz7O1GwGJ" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">【GO BUSINESS】事業企画</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">GO株式会社（旧社名：株式会社Mobility Technologies）</div>
+  <div class="co-url"><a href="https://hrmos.co/agent/corporates/1296301805240844288/jobs/2082384111657168896/detail" target="_blank">https://hrmos.co/agent/corporates/1296301805240844288/jobs/2082384111657168896/detail</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区麻布台1丁目3-1 麻布台ヒルズ森JPタワー 23F</td></tr><tr><th>設立</th><td>1977年8月</td></tr><tr><th>従業員数</th><td>600名</td></tr><tr><th>資本金</th><td>1億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>タクシーアプリ「GO」の法人向けサービスが15,000社導入で急成長中</li><li>2025年1月より事業部から法人事業本部として本部化、事業・組織投資が加速</li><li>将来的には幹部メンバーとしてPLオーナーや事業リードの役割を担える成長機会</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">GO株式会社は「移動で人を幸せに。」というミッションのもと、タクシー事業者等に向けた配車システム提供などモビリティ関連事業を展開している企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>GO株式会社</strong>は「移動で人を幸せに。」というミッションのもと、タクシー事業者等に向けた配車システム提供などモビリティ関連事業を展開している企業です。</p><p><strong>事業内容：</strong>タクシー事業者等に向けた配車システム提供などモビリティ関連事業</p><p><strong>キーワード：</strong>官公庁向け, Saas, DX, アライアンス, 地方創生, IPO</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【GO BUSINESS】事業企画</div>
+          <div class="job-preview">法人向けタクシーサービスの事業企画・戦略立案から新規事業開発まで担当</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■採用背景</strong></p><p>タクシーアプリ「GO」の法人向けサービスである「GO BUSINESS」は導入企業数が15,000社を超え、企業のタクシー移動にかかる経費精算や管理業務のDXを推進し、急速な成長を遂げています。このサービスを手がける法人事業は、当社の重要事業としてより成長速度を上げるため、2025年1月より事業部から法人事業本部として本部化して事業・組織への投資も加速しています。今後、中長期では「GO BUSINESS」だけに留まらず、周辺領域での事業・サービス開発も検討しており、既存事業のグロースや新規事業のGTMも担っていただける事業企画メンバーを募集しております。</p><p><strong>■仕事内容</strong></p><p>当社の法人事業における、既存事業のグロースに関する戦略立案、課題設定から解決のためのプロダクト戦略/マーケティング戦略の構築、一連の施策の執行（関連部署と連携）、新規領域のサービス企画・立案に携わっていただきます。将来的には幹部メンバーとして会社のマネジメントやPLオーナーとして事業リードの役割を担っていただける方を想定しています。</p><p><strong>【具体的な業務内容】</strong></p><ul><li>既存事業のグロース戦略策定（ターゲット設定／提供価値設定／デリバリープロセス設計／事業インパクト試算など）</li><li>プロダクトPMFに向けたビジネスニーズ抽出とプロダクト開発への企画・連携リード</li><li>KPIの策定／予実管理（プロダクト／マーケティング／営業組織との連動）</li><li>新規領域での事業開発に向けた企画立案・ビジネス検証</li><li>データからの仮説構築と企画立案</li></ul><p><strong>■応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><p>以下いずれかの実務経験（事業会社またはコンサル業界）</p><ul><li>事業戦略／プロダクト戦略／プロモーション戦略など、事業グロースに関する戦略立案の経験</li><li>マーケットリサーチ（市場／顧客調査）に関する企画立案の経験</li><li>売上／KGI／KPIなどの数字オーナーとして事業グロースに携わった経験</li><li>上記に類する経験</li></ul><p><strong>スキル</strong></p><ul><li>論理的思考能力</li><li>数値分析力</li><li>ユーザーニーズとビジネスニーズの両観点を踏まえた思考／判断が可能な方</li><li>ROI観点をもった思考／判断が可能な方</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>複数部署と連携しながら案件・プロジェクトをリードした経験</li><li>web／ITサービスに関わった経験</li><li>事業計画の策定／KPIモニタリング／予算管理の経験</li><li>新規サービス／プロダクト要件定義の経験</li><li>UI／UX分野に関する知識や実務経験</li><li>BIツール／SQL使用経験</li><li>外部パートナーとの協業／折衝経験</li></ul><p><strong>■求める人物像</strong></p><ul><li>「移動で人を幸せに。」というミッションへの共感</li><li>社内外と的確なコミュニケーションを取り、周囲を巻き込んで仕事を進められたご経験</li><li>マーケット、顧客、競合、など幅広い情報を自ら取得し、体系立てて整理と理解ができる方</li><li>ROI観点をもった思考/判断が可能な方</li><li>自ら情報のキャッチアップを行い、部署を横断してまとめる力がある方</li></ul><p><strong>■年収：</strong>900～1,200万円</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件あり）</span><span class="pill">💰 900-1,200万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://hrmos.co/agent/corporates/1296301805240844288/jobs/2082384111657168896/detail" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが山岸靖典 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
